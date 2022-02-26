@@ -1,9 +1,11 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:organizercandi/pages/panel_control.dart';
 import 'package:organizercandi/utils/dimens.dart';
 
 import '../utils/color.dart';
+import '../view/checkins.dart';
 import '../view/eventos.dart';
 
 class DashBoard extends StatefulWidget {
@@ -14,6 +16,7 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
+  int _itemOption = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,24 +25,23 @@ class _DashBoardState extends State<DashBoard> {
         backgroundColor: primary,
         elevation: elevation_Appbar,
         actions: [
-          Icon(Iconsax.search_normal),
-          SizedBox(
-            width: marginMedium,
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Iconsax.search_normal),
           ),
-          Badge(
-            position: BadgePosition.topEnd(top: 4, end: -3),
-            badgeContent: Text("1"),
-            elevation: 0,
-            badgeColor: Colors.white,
-            child: Icon(Iconsax.notification),
-          ),
-          SizedBox(
-            width: marginBig,
-          )
+          /*Badge(
+              position: BadgePosition.topEnd(top: 5, end: 8),
+              badgeContent: Text("1"),
+              elevation: 0,
+              badgeColor: Colors.white,
+              child: IconButton(
+                onPressed: () {},
+                icon: Icon(Iconsax.notification),
+              )),*/
         ],
       ),
       drawer: _drawer(),
-      body: MisEventos(),
+      body: _getView(),
     ));
   }
 
@@ -99,47 +101,87 @@ class _DashBoardState extends State<DashBoard> {
                 ],
               )),
           ListTile(
-            leading: Icon(Iconsax.edit),
+            leading: Icon(Iconsax.edit, color: Colors.black87),
             title: Text('Editar evento'),
           ),
           ListTile(
-            leading: Icon(Iconsax.setting_2),
+            leading: Icon(
+              Icons.list_sharp,
+              color: Colors.black87,
+            ),
+            title: Text('Lista de invitados'),
+          ),
+          ListTile(
+            leading: Icon(Iconsax.setting_2, color: Colors.black87),
             title: Text('Configuración del evento'),
           ),
           Divider(
             thickness: DividerH,
             height: DividerHeigth,
           ),
-          ListTile(
-            leading: Icon(Iconsax.bill),
-            title: Text('Mis eventos'),
+          GestureDetector(
+            child: ListTile(
+              leading: Icon(Iconsax.bill, color: Colors.black87),
+              title: Text('Eventos'),
+            ),
+            onTap: () {
+              setState(() {
+                this._itemOption = 2;
+              });
+            },
           ),
           ListTile(
-            leading: Icon(Iconsax.ticket),
-            title: Text('Escanear ticket'),
+            leading: Icon(Iconsax.ticket, color: Colors.black87),
+            title: Text('Check ins'),
           ),
+          GestureDetector(
+              child: ListTile(
+            leading: Icon(Iconsax.receipt, color: Colors.black87),
+            title: Text('Buscar pedidos'),
+            onTap: () {
+              setState(() {
+                this._itemOption = 4;
+              });
+            },
+          )),
           ListTile(
-            leading: Icon(Iconsax.receipt),
-            title: Text('Ordenes'),
-          ),
-          ListTile(
-            leading: Icon(Iconsax.setting_2),
+            leading: Icon(Iconsax.setting_2, color: Colors.black87),
             title: Text('Configuración del dispositivo'),
           ),
           ListTile(
-            leading: Icon(Iconsax.bank),
+            leading: Icon(Iconsax.bank, color: Colors.black87),
             title: Text('Cambiar Organización'),
           ),
-          ListTile(
-            leading: Icon(Iconsax.category),
-            title: Text('Panel de control'),
+          GestureDetector(
+            child: ListTile(
+              leading: Icon(Iconsax.category, color: Colors.black87),
+              title: Text('Panel de control'),
+            ),
+            onTap: () {
+              Navigator.of(context).pushNamed("/panel");
+            },
           ),
           ListTile(
-            leading: Icon(Iconsax.login),
+            leading: Icon(Iconsax.login, color: Colors.black87),
             title: Text('Cerrar sesión'),
           ),
         ],
       ),
     );
+  }
+
+  _getView() {
+    switch (this._itemOption) {
+      case 0:
+        break;
+      case 1:
+        break;
+      case 2:
+        return MisEventos();
+        break;
+      case 4:
+        return CheckIns();
+        break;
+    }
   }
 }

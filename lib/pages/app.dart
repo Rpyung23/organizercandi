@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:organizercandi/pages/create_evento.dart';
 import 'package:organizercandi/utils/dimens.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
 import '../utils/color.dart';
 import 'dashboard.dart';
+import 'login.dart';
 import 'panel_control.dart';
 
 class MyApp extends StatelessWidget {
@@ -20,11 +22,24 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Organizador',
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate
+      ],
+      supportedLocales: [const Locale('en', 'ES'), const Locale('es', 'ES')],
+      initialRoute: '/createEvento',
+      routes: <String, WidgetBuilder>{
+        '/panel': (BuildContext context) => new PanelControl(),
+        '/dashboard': (BuildContext context) => new DashBoard(),
+        '/login': (BuildContext context) => new Login(),
+        '/createEvento': (BuildContext context) => new CreateEvent(),
+      },
       theme: ThemeData(
           fontFamily: 'DMSans',
+          scaffoldBackgroundColor: Colors.white,
           appBarTheme: AppBarTheme(
               backgroundColor: primary, elevation: elevation_Appbar)),
-      home: PanelControl(),
+      home: Login(),
     );
   }
 }

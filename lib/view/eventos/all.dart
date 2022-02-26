@@ -47,7 +47,9 @@ class _AllEventosState extends State<AllEventos> {
                 margin: EdgeInsets.all(marginMedium),
                 child: FloatingActionButton(
                   elevation: 3,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/createEvento");
+                  },
                   backgroundColor: Colors.black,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(marginMedium)),
