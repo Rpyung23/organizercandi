@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:organizercandi/view/createEvent/add_location.dart';
 import 'package:organizercandi/pages/create_evento.dart';
 import 'package:organizercandi/utils/dimens.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import '../utils/color.dart';
+import '../view/createEvent/finalEvent.dart';
 import 'dashboard.dart';
 import 'login.dart';
 import 'panel_control.dart';
@@ -27,12 +29,14 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate
       ],
       supportedLocales: [const Locale('en', 'ES'), const Locale('es', 'ES')],
-      initialRoute: '/createEvento',
+      initialRoute: '/login',
       routes: <String, WidgetBuilder>{
         '/panel': (BuildContext context) => new PanelControl(),
         '/dashboard': (BuildContext context) => new DashBoard(),
         '/login': (BuildContext context) => new Login(),
         '/createEvento': (BuildContext context) => new CreateEvent(),
+        '/add_new_location': (BuildContext context) => new AddNewLocation(),
+        '/final_event': (BuildContext context) => new FinalEvent()
       },
       theme: ThemeData(
           fontFamily: 'DMSans',

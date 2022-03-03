@@ -40,6 +40,7 @@ dependencies:
   flutter_localizations: 
     sdk: flutter
     version: ^0.0.0
+  google_maps_flutter: ^2.1.2
 
 dev_dependencies:
   flutter_test:

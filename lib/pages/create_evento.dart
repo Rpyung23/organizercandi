@@ -6,6 +6,7 @@ import '../utils/dimens.dart';
 import '../view/createEvent/description_event.dart';
 import '../view/createEvent/fecha_event.dart';
 import '../view/createEvent/name_event.dart';
+import '../view/createEvent/ubication_event.dart';
 
 class CreateEvent extends StatefulWidget {
   PageController controllerPageView = PageController();
@@ -35,10 +36,11 @@ class _CreateEventState extends State<CreateEvent> {
             children: [
               PageView(
                 controller: widget.controllerPageView,
-                children: const <Widget>[
+                children: <Widget>[
                   CreateNameEvent(),
                   CreateDescriptionEvent(),
-                  CreateFechaEvent()
+                  CreateFechaEvent(),
+                  UbicationEvent(),
                 ],
               ),
               Align(
@@ -49,8 +51,8 @@ class _CreateEventState extends State<CreateEvent> {
           ),
         ),
         onWillPop: () async {
+          widget.pageCount = widget.pageCount - 1;
           _NextPreviewController();
-
           return false;
         });
   }
@@ -61,7 +63,7 @@ class _CreateEventState extends State<CreateEvent> {
       child: FloatingActionButton(
         onPressed: () {
           widget.pageCount = widget.pageCount + 1;
-          widget.controllerPageView.jumpToPage(widget.pageCount);
+          _NextPreviewController();
         },
         backgroundColor: primary,
         elevation: 1,
@@ -73,11 +75,17 @@ class _CreateEventState extends State<CreateEvent> {
   }
 
   void _NextPreviewController() {
-    if (widget.pageCount == 0) {
+    print("PAGECOUNT : " + widget.pageCount.toString());
+    if (widget.pageCount == 4) {
       Navigator.of(context).pop();
+      Navigator.of(context).pushNamed("/final_event");
     } else {
-      widget.pageCount = widget.pageCount - 1;
-      widget.controllerPageView.jumpToPage(widget.pageCount);
+      if (widget.pageCount == 0) {
+        Navigator.of(context).pop();
+      } else if (widget.pageCount < 3) {
+        //widget.pageCount = widget.pageCount - 1;
+        widget.controllerPageView.jumpToPage(widget.pageCount);
+      }
     }
   }
 }
