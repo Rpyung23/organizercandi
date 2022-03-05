@@ -93,18 +93,24 @@ class _FinalEventState extends State<FinalEvent> {
                             "Organizador",
                             style: TextStyle(color: Colors.white),
                           ),
-                          Row(
-                            children: [
-                              Text("Jockey Club",
-                                  style: TextStyle(color: Colors.white)),
-                              SizedBox(
-                                width: marginMedium,
-                              ),
-                              Icon(
-                                Icons.keyboard_arrow_down_outlined,
-                                color: Colors.white,
-                              )
-                            ],
+                          GestureDetector(
+                            child: Row(
+                              children: [
+                                Text("Jockey Club",
+                                    style: TextStyle(color: Colors.white)),
+                                SizedBox(
+                                  width: marginMedium,
+                                ),
+                                Icon(
+                                  Icons.keyboard_arrow_down_outlined,
+                                  color: Colors.white,
+                                )
+                              ],
+                            ),
+                            onTap: () {
+                              Navigator.of(context)
+                                  .pushNamed("/create_organizador");
+                            },
                           ),
                           Text("Decribe brevemente tu evento",
                               style: TextStyle(color: Colors.white))
@@ -247,6 +253,9 @@ class _FinalEventState extends State<FinalEvent> {
     return ListTile(
         contentPadding: EdgeInsets.symmetric(horizontal: 0),
         minLeadingWidth: 10,
+        onTap: () {
+          Navigator.of(context).pushNamed("/create_entrada");
+        },
         leading: Badge(
           elevation: 0,
           position: BadgePosition.topEnd(top: -2, end: -2),

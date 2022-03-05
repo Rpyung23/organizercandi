@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:organizercandi/view/createEvent/add_location.dart';
-import 'package:organizercandi/pages/create_evento.dart';
+import 'package:organizercandi/pages/organizador/create_organizer.dart';
+import 'package:organizercandi/pages/evento/add_location.dart';
+import 'package:organizercandi/pages/evento/create_evento.dart';
 import 'package:organizercandi/utils/dimens.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import '../utils/color.dart';
-import '../view/createEvent/finalEvent.dart';
+import '../view/cambio_organizacion.dart';
+import '../view/config_dispo.dart';
+import 'evento/finalEvent.dart';
 import 'dashboard.dart';
+import 'entradas/divisa.dart';
+import 'entradas/entrdas.dart';
+import 'entradas/pago_gratis.dart';
+import 'formas.pago.dart';
 import 'login.dart';
+import 'organizador/organizador.dart';
 import 'panel_control.dart';
 
 class MyApp extends StatelessWidget {
@@ -36,7 +44,15 @@ class MyApp extends StatelessWidget {
         '/login': (BuildContext context) => new Login(),
         '/createEvento': (BuildContext context) => new CreateEvent(),
         '/add_new_location': (BuildContext context) => new AddNewLocation(),
-        '/final_event': (BuildContext context) => new FinalEvent()
+        '/final_event': (BuildContext context) => new FinalEvent(),
+        '/create_entrada': (BuildContext context) => new EntradasCreate(),
+        '/pais_divisa': (BuildContext context) => new PaisDivisaEntrada(),
+        '/pago_gratis': (BuildContext context) => new PagoGratisEvento(),
+        '/list_organizador': (BuildContext context) => new ListOrganizer(),
+        '/create_organizer': (BuildContext context) => new CreateOrganizer(),
+        '/cambio_organizer': (BuildContext context) => new CambioOrganizador(),
+        '/config_dispo': (BuildContext context) => new ConfigDispo(),
+        '/formas_pago': (BuildContext context) => new FormasPago(),
       },
       theme: ThemeData(
           fontFamily: 'DMSans',

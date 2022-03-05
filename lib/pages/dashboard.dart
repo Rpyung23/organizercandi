@@ -5,7 +5,9 @@ import 'package:organizercandi/pages/panel_control.dart';
 import 'package:organizercandi/utils/dimens.dart';
 
 import '../utils/color.dart';
+import '../view/cambio_organizacion.dart';
 import '../view/checkins.dart';
+import '../view/config_dispo.dart';
 import '../view/eventos.dart';
 
 class DashBoard extends StatefulWidget {
@@ -114,6 +116,11 @@ class _DashBoardState extends State<DashBoard> {
           ListTile(
             leading: Icon(Iconsax.setting_2, color: Colors.black87),
             title: Text('Configuración del evento'),
+            onTap: () {
+              setState(() {
+                this._itemOption = 2;
+              });
+            },
           ),
           Divider(
             thickness: DividerH,
@@ -126,7 +133,7 @@ class _DashBoardState extends State<DashBoard> {
             ),
             onTap: () {
               setState(() {
-                this._itemOption = 2;
+                this._itemOption = 3;
               });
             },
           ),
@@ -151,6 +158,11 @@ class _DashBoardState extends State<DashBoard> {
           ListTile(
             leading: Icon(Iconsax.bank, color: Colors.black87),
             title: Text('Cambiar Organización'),
+            onTap: () {
+              setState(() {
+                this._itemOption = 7;
+              });
+            },
           ),
           GestureDetector(
             child: ListTile(
@@ -177,10 +189,16 @@ class _DashBoardState extends State<DashBoard> {
       case 1:
         break;
       case 2:
+        return ConfigDispo();
+        break;
+      case 3:
         return MisEventos();
         break;
       case 4:
         return CheckIns();
+        break;
+      case 7:
+        return CambioOrganizador();
         break;
     }
   }

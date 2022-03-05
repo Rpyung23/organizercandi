@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:organizercandi/utils/color.dart';
 
-import '../utils/dimens.dart';
-import '../view/createEvent/description_event.dart';
-import '../view/createEvent/fecha_event.dart';
-import '../view/createEvent/name_event.dart';
-import '../view/createEvent/ubication_event.dart';
+import '../../utils/dimens.dart';
+import '../../view/createEvent/description_event.dart';
+import '../../view/createEvent/fecha_event.dart';
+import '../../view/createEvent/name_event.dart';
+import '../../view/createEvent/ubication_event.dart';
 
 class CreateEvent extends StatefulWidget {
   PageController controllerPageView = PageController();

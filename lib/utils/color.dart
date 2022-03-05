@@ -17,7 +17,7 @@ const appBgColor = Color(0xFFFAFAFA);
 const shadowColor = Colors.black87;
 const textBoxColor = Color(0xFFe9e9e9);
 
-const bottomBarColor = Colors.black;
+const black = Color(0xff212020);
 const inActiveColor = Color(0xFF3E4249);
 
 const yellow = Color(0xFFffcb66);
