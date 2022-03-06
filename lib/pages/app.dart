@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:organizercandi/pages/organizador/create_organizer.dart';
 import 'package:organizercandi/pages/evento/add_location.dart';
 import 'package:organizercandi/pages/evento/create_evento.dart';
+import 'package:organizercandi/pages/promocional/create_promocional.dart';
 import 'package:organizercandi/utils/dimens.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import '../utils/color.dart';
@@ -15,8 +16,10 @@ import 'entradas/entrdas.dart';
 import 'entradas/pago_gratis.dart';
 import 'formas.pago.dart';
 import 'login.dart';
+import 'login_register.dart';
 import 'organizador/organizador.dart';
 import 'panel_control.dart';
+import 'promocional/promocional.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -53,6 +56,10 @@ class MyApp extends StatelessWidget {
         '/cambio_organizer': (BuildContext context) => new CambioOrganizador(),
         '/config_dispo': (BuildContext context) => new ConfigDispo(),
         '/formas_pago': (BuildContext context) => new FormasPago(),
+        '/login_register': (BuildContext context) => new LoginRegister(),
+        '/promocional': (BuildContext context) => new CodigoPromocional(),
+        '/create_promocional': (BuildContext context) =>
+            new CreatePromocional(),
       },
       theme: ThemeData(
           fontFamily: 'DMSans',

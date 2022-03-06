@@ -220,6 +220,9 @@ class _LoginState extends State<Login> {
           Iconsax.user,
           color: Colors.black87,
         ),
+        onTap: () {
+          Navigator.of(context).pushNamed("/login_register");
+        },
         title: Text(
           "Iniciar sesión",
           style: TextStyle(

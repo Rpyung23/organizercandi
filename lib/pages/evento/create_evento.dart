@@ -24,6 +24,7 @@ class _CreateEventState extends State<CreateEvent> {
             backgroundColor: Colors.white,
             leading: IconButton(
                 onPressed: () {
+                  widget.pageCount = widget.pageCount - 1;
                   _NextPreviewController();
                 },
                 icon: Icon(
@@ -76,11 +77,11 @@ class _CreateEventState extends State<CreateEvent> {
 
   void _NextPreviewController() {
     print("PAGECOUNT : " + widget.pageCount.toString());
-    if (widget.pageCount == 4) {
+    if (widget.pageCount == 3) {
       Navigator.of(context).pop();
       Navigator.of(context).pushNamed("/final_event");
     } else {
-      if (widget.pageCount == 0) {
+      if (widget.pageCount < 0) {
         Navigator.of(context).pop();
       } else if (widget.pageCount < 3) {
         //widget.pageCount = widget.pageCount - 1;

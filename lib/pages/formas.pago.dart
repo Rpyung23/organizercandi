@@ -122,7 +122,7 @@ class FormasPago extends StatelessWidget {
               ),
             )),
         onWillPop: () async {
-          Navigator.of(context).pop();
+          Navigator.of(context).pop(); 
           return true;
         });
   }
