@@ -105,18 +105,28 @@ class _DashBoardState extends State<DashBoard> {
           ListTile(
             leading: Icon(Iconsax.edit, color: Colors.black87),
             title: Text('Editar evento'),
+            selectedColor: primary,
+            onTap: () {
+              Navigator.of(context).pop();
+            },
           ),
           ListTile(
             leading: Icon(
               Icons.list_sharp,
               color: Colors.black87,
             ),
+            onTap: () {
+              Navigator.of(context).pop();
+            },
             title: Text('Lista de invitados'),
+            selectedColor: primary,
           ),
           ListTile(
             leading: Icon(Iconsax.setting_2, color: Colors.black87),
             title: Text('Configuración del evento'),
+            selectedColor: primary,
             onTap: () {
+              Navigator.of(context).pop();
               setState(() {
                 this._itemOption = 2;
               });
@@ -130,8 +140,10 @@ class _DashBoardState extends State<DashBoard> {
             child: ListTile(
               leading: Icon(Iconsax.bill, color: Colors.black87),
               title: Text('Eventos'),
+              selectedColor: primary,
             ),
             onTap: () {
+              Navigator.of(context).pop();
               setState(() {
                 this._itemOption = 3;
               });
@@ -140,12 +152,18 @@ class _DashBoardState extends State<DashBoard> {
           ListTile(
             leading: Icon(Iconsax.ticket, color: Colors.black87),
             title: Text('Check ins'),
+            selectedColor: primary,
+            onTap: () {
+              Navigator.of(context).pop();
+            },
           ),
           GestureDetector(
               child: ListTile(
             leading: Icon(Iconsax.receipt, color: Colors.black87),
             title: Text('Buscar pedidos'),
+            selectedColor: primary,
             onTap: () {
+              Navigator.of(context).pop();
               setState(() {
                 this._itemOption = 4;
               });
@@ -154,11 +172,17 @@ class _DashBoardState extends State<DashBoard> {
           ListTile(
             leading: Icon(Iconsax.setting_2, color: Colors.black87),
             title: Text('Configuración del dispositivo'),
+            selectedColor: primary,
+            onTap: () {
+              Navigator.of(context).pop();
+            },
           ),
           ListTile(
             leading: Icon(Iconsax.bank, color: Colors.black87),
             title: Text('Cambiar Organización'),
+            selectedColor: primary,
             onTap: () {
+              Navigator.of(context).pop();
               setState(() {
                 this._itemOption = 7;
               });
@@ -168,14 +192,20 @@ class _DashBoardState extends State<DashBoard> {
             child: ListTile(
               leading: Icon(Iconsax.category, color: Colors.black87),
               title: Text('Panel de control'),
+              selectedColor: primary,
             ),
             onTap: () {
+              Navigator.of(context).pop();
               Navigator.of(context).pushNamed("/panel");
             },
           ),
           ListTile(
             leading: Icon(Iconsax.login, color: Colors.black87),
+            selectedColor: primary,
             title: Text('Cerrar sesión'),
+            onTap: () {
+              Navigator.of(context).pop();
+            },
           ),
         ],
       ),

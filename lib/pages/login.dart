@@ -3,9 +3,10 @@ import 'package:iconsax/iconsax.dart';
 import 'package:organizercandi/utils/color.dart';
 
 import '../utils/dimens.dart';
+import '../view/config_dispo.dart';
 
 class Login extends StatefulWidget {
-  Login({Key? key}) : super(key: key);
+  int vista = 0;
 
   @override
   State<Login> createState() => _LoginState();
@@ -18,22 +19,11 @@ class _LoginState extends State<Login> {
         child: Scaffold(
             extendBodyBehindAppBar: true,
             appBar: AppBar(
-              backgroundColor: Colors.transparent,
+              backgroundColor: widget.vista == 0 ? Colors.transparent : primary,
               elevation: 0,
             ),
             drawer: _drawer(),
-            body: Stack(
-              children: [
-                Positioned(
-                  top: -(MediaQuery.of(context).size.width * 0.2),
-                  left: -(MediaQuery.of(context).size.width * 0.15),
-                  child: _circle(),
-                ),
-                Align(
-                  child: _body(),
-                )
-              ],
-            )));
+            body: _view()));
   }
 
   _body() {
@@ -104,7 +94,7 @@ class _LoginState extends State<Login> {
           ),
           OutlinedButton(
             onPressed: () {
-              Navigator.of(context).pushNamed("/dashboard");
+              Navigator.of(context).pushNamed("/login_register");
             },
             child: Stack(alignment: Alignment.center, children: const [
               Align(
@@ -204,6 +194,11 @@ class _LoginState extends State<Login> {
             ],
           )),
       ListTile(
+        onTap: () {
+          setState(() {
+            widget.vista = 1;
+          });
+        },
         leading: Icon(
           Iconsax.setting_2,
           color: Colors.black87,
@@ -221,7 +216,9 @@ class _LoginState extends State<Login> {
           color: Colors.black87,
         ),
         onTap: () {
-          Navigator.of(context).pushNamed("/login_register");
+          setState(() {
+            widget.vista = 0;
+          });
         },
         title: Text(
           "Iniciar sesión",
@@ -231,5 +228,28 @@ class _LoginState extends State<Login> {
         ),
       )
     ]));
+  }
+
+  _view() {
+    if (widget.vista == 0) {
+      return _viewlogin();
+    } else {
+      return ConfigDispo();
+    }
+  }
+
+  _viewlogin() {
+    return Stack(
+      children: [
+        Positioned(
+          top: -(MediaQuery.of(context).size.width * 0.2),
+          left: -(MediaQuery.of(context).size.width * 0.15),
+          child: _circle(),
+        ),
+        Align(
+          child: _body(),
+        )
+      ],
+    );
   }
 }
