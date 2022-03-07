@@ -154,6 +154,9 @@ class _DashBoardState extends State<DashBoard> {
             title: Text('Check ins'),
             selectedColor: primary,
             onTap: () {
+              setState(() {
+                this._itemOption = 4;
+              });
               Navigator.of(context).pop();
             },
           ),
@@ -164,9 +167,6 @@ class _DashBoardState extends State<DashBoard> {
             selectedColor: primary,
             onTap: () {
               Navigator.of(context).pop();
-              setState(() {
-                this._itemOption = 4;
-              });
             },
           )),
           ListTile(

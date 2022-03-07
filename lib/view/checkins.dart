@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:organizercandi/utils/color.dart';
+import '../utils/dimens.dart';
 import 'checkins/all.dart';
-
 
 class CheckIns extends StatefulWidget {
   CheckIns({Key? key}) : super(key: key);
@@ -35,9 +37,31 @@ class _CheckInsState extends State<CheckIns> {
             ),
           ],
         ),
-        body: _view(),
+        body: Stack(
+          children: [
+            TabBarView(children: [
+              AllCheckIns(),
+              Center(
+                child: Text("Anteriores"),
+              )
+            ]),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: _qr(),
+            )
+          ],
+        ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      //systemNavigationBarColor: Colors.blue, // navigation bar color
+      statusBarColor: black, // status bar color
+    ));
   }
 
   _view() {
@@ -47,8 +71,21 @@ class _CheckInsState extends State<CheckIns> {
         break;
       case 1:
         break;
-      case 2:
-        break;
     }
+  }
+
+  _qr() {
+    return Container(
+      margin: EdgeInsets.all(marginBig),
+      child: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed("/scanner");
+        },
+        backgroundColor: black,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(RadiusBorderMedium)),
+        child: Icon(Iconsax.scan),
+      ),
+    );
   }
 }

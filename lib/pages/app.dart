@@ -8,7 +8,10 @@ import 'package:organizercandi/utils/dimens.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import '../utils/color.dart';
 import '../view/cambio_organizacion.dart';
+import '../view/checkins.dart';
 import '../view/config_dispo.dart';
+import 'chekins/detalle_participante.dart';
+import 'chekins/scanner_qr.dart';
 import 'evento/finalEvent.dart';
 import 'dashboard.dart';
 import 'entradas/divisa.dart';
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       //systemNavigationBarColor: Colors.blue, // navigation bar color
-      statusBarColor: primaryDark, // status bar color
+      statusBarColor: darker, // status bar color
     ));
 
     return MaterialApp(
@@ -60,6 +63,9 @@ class MyApp extends StatelessWidget {
         '/promocional': (BuildContext context) => new CodigoPromocional(),
         '/create_promocional': (BuildContext context) =>
             new CreatePromocional(),
+        '/scanner': (BuildContext context) => new ScannerQr(),
+        '/detalle_participante': (BuildContext context) =>
+            new DetalleParticipante()
       },
       theme: ThemeData(
           fontFamily: 'DMSans',
