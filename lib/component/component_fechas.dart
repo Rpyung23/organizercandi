@@ -8,6 +8,7 @@ class ComponentFechas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 60,
       decoration: BoxDecoration(
           color: black_custom,
           borderRadius: BorderRadius.circular(RadiusBorderMedium)),
@@ -21,7 +22,8 @@ class ComponentFechas extends StatelessWidget {
                   icon: Icon(Iconsax.calendar_2, color: Colors.white),
                   label: Text(
                     "Día",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: Colors.white, fontSize: textMediumEntrada),
                   ))),
           Container(
             width: 1.5,
@@ -34,7 +36,9 @@ class ComponentFechas extends StatelessWidget {
                     _showTimer(context);
                   },
                   icon: Icon(Iconsax.timer_1, color: Colors.white),
-                  label: Text("Día", style: TextStyle(color: Colors.white))))
+                  label: Text("Hora",
+                      style: TextStyle(
+                          color: Colors.white, fontSize: textMediumEntrada))))
         ],
       ),
     );

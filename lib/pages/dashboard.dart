@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:organizercandi/pages/panel_control.dart';
 import 'package:organizercandi/utils/dimens.dart';
@@ -52,59 +55,17 @@ class _DashBoardState extends State<DashBoard> {
       child: ListView(
         padding: EdgeInsets.all(0.0),
         children: [
-          DrawerHeader(
-              margin: EdgeInsets.all(0),
-              padding: EdgeInsets.only(left: 0, right: 0),
-              child: Stack(
-                children: [
-                  FadeInImage(
-                      height: double.infinity,
-                      width: double.infinity,
-                      fit: BoxFit.fill,
-                      placeholder: AssetImage("assets/loading.gif"),
-                      image: AssetImage("assets/profile.jpg")),
-                  Positioned(
-                      bottom: 0,
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            left: marginMedium,
-                            right: marginMedium,
-                            bottom: marginBig),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Text(
-                              "Hallowen 2021",
-                              maxLines: 1,
-                              overflow: TextOverflow.clip,
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: textBig,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text("Nov 05-07-21 20:00 GTM+AR",
-                                maxLines: 1,
-                                overflow: TextOverflow.clip,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: textSmallEntrada,
-                                    fontWeight: FontWeight.w100)),
-                            Text("Formosa,Argentina",
-                                maxLines: 1,
-                                overflow: TextOverflow.clip,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: textSmallEntrada,
-                                    fontWeight: FontWeight.w100))
-                          ],
-                        ),
-                      ))
-                ],
-              )),
+          _headerDrawer(),
           ListTile(
-            leading: Icon(Iconsax.edit, color: Colors.black87),
-            title: Text('Editar evento'),
+            leading: Icon(
+              Iconsax.edit,
+              color: Colors.black87,
+            ),
+            title: Text(
+              'Editar evento',
+              style: TextStyle(
+                  fontSize: textMediumEntrada, fontWeight: FontWeight.w500),
+            ),
             selectedColor: primary,
             onTap: () {
               Navigator.of(context).pop();
@@ -118,12 +79,16 @@ class _DashBoardState extends State<DashBoard> {
             onTap: () {
               Navigator.of(context).pop();
             },
-            title: Text('Lista de invitados'),
+            title: Text('Lista de invitados',
+                style: TextStyle(
+                    fontSize: textMediumEntrada, fontWeight: FontWeight.w500)),
             selectedColor: primary,
           ),
           ListTile(
             leading: Icon(Iconsax.setting_2, color: Colors.black87),
-            title: Text('Configuración del evento'),
+            title: Text('Configuración del evento',
+                style: TextStyle(
+                    fontSize: textMediumEntrada, fontWeight: FontWeight.w500)),
             selectedColor: primary,
             onTap: () {
               Navigator.of(context).pop();
@@ -139,7 +104,10 @@ class _DashBoardState extends State<DashBoard> {
           GestureDetector(
             child: ListTile(
               leading: Icon(Iconsax.bill, color: Colors.black87),
-              title: Text('Eventos'),
+              title: Text('Eventos',
+                  style: TextStyle(
+                      fontSize: textMediumEntrada,
+                      fontWeight: FontWeight.w500)),
               selectedColor: primary,
             ),
             onTap: () {
@@ -151,7 +119,9 @@ class _DashBoardState extends State<DashBoard> {
           ),
           ListTile(
             leading: Icon(Iconsax.ticket, color: Colors.black87),
-            title: Text('Check ins'),
+            title: Text('Check ins',
+                style: TextStyle(
+                    fontSize: textMediumEntrada, fontWeight: FontWeight.w500)),
             selectedColor: primary,
             onTap: () {
               setState(() {
@@ -163,7 +133,9 @@ class _DashBoardState extends State<DashBoard> {
           GestureDetector(
               child: ListTile(
             leading: Icon(Iconsax.receipt, color: Colors.black87),
-            title: Text('Buscar pedidos'),
+            title: Text('Buscar pedidos',
+                style: TextStyle(
+                    fontSize: textMediumEntrada, fontWeight: FontWeight.w500)),
             selectedColor: primary,
             onTap: () {
               Navigator.of(context).pop();
@@ -171,7 +143,9 @@ class _DashBoardState extends State<DashBoard> {
           )),
           ListTile(
             leading: Icon(Iconsax.setting_2, color: Colors.black87),
-            title: Text('Configuración del dispositivo'),
+            title: Text('Configuración del dispositivo',
+                style: TextStyle(
+                    fontSize: textMediumEntrada, fontWeight: FontWeight.w500)),
             selectedColor: primary,
             onTap: () {
               Navigator.of(context).pop();
@@ -179,7 +153,9 @@ class _DashBoardState extends State<DashBoard> {
           ),
           ListTile(
             leading: Icon(Iconsax.bank, color: Colors.black87),
-            title: Text('Cambiar Organización'),
+            title: Text('Cambiar Organización',
+                style: TextStyle(
+                    fontSize: textMediumEntrada, fontWeight: FontWeight.w500)),
             selectedColor: primary,
             onTap: () {
               Navigator.of(context).pop();
@@ -191,7 +167,10 @@ class _DashBoardState extends State<DashBoard> {
           GestureDetector(
             child: ListTile(
               leading: Icon(Iconsax.category, color: Colors.black87),
-              title: Text('Panel de control'),
+              title: Text('Panel de control',
+                  style: TextStyle(
+                      fontSize: textMediumEntrada,
+                      fontWeight: FontWeight.w500)),
               selectedColor: primary,
             ),
             onTap: () {
@@ -202,7 +181,9 @@ class _DashBoardState extends State<DashBoard> {
           ListTile(
             leading: Icon(Iconsax.login, color: Colors.black87),
             selectedColor: primary,
-            title: Text('Cerrar sesión'),
+            title: Text('Cerrar sesión',
+                style: TextStyle(
+                    fontSize: textMediumEntrada, fontWeight: FontWeight.w500)),
             onTap: () {
               Navigator.of(context).pop();
             },
@@ -232,4 +213,110 @@ class _DashBoardState extends State<DashBoard> {
         break;
     }
   }
+
+  _headerDrawer() {
+    return DrawerHeader(
+      margin: EdgeInsets.all(0),
+      decoration: BoxDecoration(color: HexColor("212121")),
+      padding: EdgeInsets.only(left: 10, right: 10),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Flexible(
+              flex: 1,
+              child: FadeInImage(
+                  height: 90,
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                  placeholder: AssetImage("assets/loading.gif"),
+                  image: AssetImage("assets/profile.jpg"))),
+          SizedBox(
+            width: marginMedium,
+          ),
+          Expanded(
+              child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Hallowen 2021",
+                maxLines: 1,
+                overflow: TextOverflow.clip,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: textBig,
+                    fontWeight: FontWeight.bold),
+              ),
+              Text("Nov 05-07-21 20:00 GTM+AR",
+                  maxLines: 1,
+                  overflow: TextOverflow.clip,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: textSmallEntrada,
+                      fontWeight: FontWeight.w100)),
+              Text("Formosa,Argentina",
+                  maxLines: 1,
+                  overflow: TextOverflow.clip,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: textSmallEntrada,
+                      fontWeight: FontWeight.w100))
+            ],
+          ))
+        ],
+      ),
+    );
+  }
 }
+
+
+/*child: Row(
+          children: [
+            FadeInImage(
+                height: double.infinity,
+                width: double.infinity,
+                fit: BoxFit.fill,
+                placeholder: AssetImage("assets/loading.gif"),
+                image: AssetImage("assets/profile.jpg")),
+            Positioned(
+                bottom: 0,
+                child: Container(
+                  margin: EdgeInsets.only(
+                      left: marginMedium,
+                      right: marginMedium,
+                      bottom: marginBig),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Text(
+                        "Hallowen 2021",
+                        maxLines: 1,
+                        overflow: TextOverflow.clip,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: textBig,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text("Nov 05-07-21 20:00 GTM+AR",
+                          maxLines: 1,
+                          overflow: TextOverflow.clip,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: textSmallEntrada,
+                              fontWeight: FontWeight.w100)),
+                      Text("Formosa,Argentina",
+                          maxLines: 1,
+                          overflow: TextOverflow.clip,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: textSmallEntrada,
+                              fontWeight: FontWeight.w100))
+                    ],
+                  ),
+                ))
+          ]*/
+       

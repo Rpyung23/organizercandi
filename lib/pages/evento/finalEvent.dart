@@ -330,6 +330,9 @@ class _FinalEventState extends State<FinalEvent> {
         contentPadding: EdgeInsets.symmetric(horizontal: 0),
         minLeadingWidth: 10,
         leading: Icon(Iconsax.gift),
+        onTap: () {
+          Navigator.of(context).pushNamed("/promocional");
+        },
         title:
             Text("Código Promocional", style: TextStyle(fontSize: textMedium)),
         subtitle: Text("Agregar código promocional",

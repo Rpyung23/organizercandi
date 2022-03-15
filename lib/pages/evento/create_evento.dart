@@ -77,13 +77,13 @@ class _CreateEventState extends State<CreateEvent> {
 
   void _NextPreviewController() {
     print("PAGECOUNT : " + widget.pageCount.toString());
-    if (widget.pageCount == 3) {
+    if (widget.pageCount == 4) {
       Navigator.of(context).pop();
       Navigator.of(context).pushNamed("/final_event");
     } else {
       if (widget.pageCount < 0) {
         Navigator.of(context).pop();
-      } else if (widget.pageCount < 3) {
+      } else if (widget.pageCount < 4) {
         //widget.pageCount = widget.pageCount - 1;
         widget.controllerPageView.jumpToPage(widget.pageCount);
       }

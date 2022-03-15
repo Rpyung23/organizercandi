@@ -66,12 +66,6 @@ class ViewInicioLogin extends StatelessWidget {
                   SizedBox(
                     height: 50,
                   ),
-                  Center(
-                    child: Text(
-                      "He olvidado mi contraseña",
-                      style: TextStyle(color: primary, fontSize: textMedium),
-                    ),
-                  )
                 ],
               ),
             )

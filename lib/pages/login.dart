@@ -196,6 +196,7 @@ class _LoginState extends State<Login> {
       ListTile(
         onTap: () {
           setState(() {
+            Navigator.of(context).pop();
             widget.vista = 1;
           });
         },
@@ -217,6 +218,7 @@ class _LoginState extends State<Login> {
         ),
         onTap: () {
           setState(() {
+            Navigator.of(context).pop();
             widget.vista = 0;
           });
         },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:organizercandi/utils/color.dart';
 
 import '../utils/dimens.dart';
@@ -14,27 +15,17 @@ class CardAllEvento extends StatelessWidget {
         Row(
           children: [
             SizedBox(
-              width: marginSmall,
+              width: marginMedium,
             ),
             CircleAvatar(
-              backgroundColor: primary,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "NOV.",
-                    style: TextStyle(fontSize: 10, color: Colors.white),
-                  ),
-                  Text("18",
-                      style: TextStyle(fontSize: 10, color: Colors.white))
-                ],
-              ),
+              backgroundColor: black_custom,
+              radius: 25,
+              child: Icon(Icons.edit_outlined, color: Colors.white),
             ),
             SizedBox(
-              width: marginSmall,
+              width: marginBig,
             ),
-            FadeInImage(
+            /*FadeInImage(
                 height: 75,
                 width: 80,
                 fit: BoxFit.fill,
@@ -43,7 +34,7 @@ class CardAllEvento extends StatelessWidget {
                     "https://economipedia.com/wp-content/uploads/pasos-para-crear-un-evento.jpg")),
             SizedBox(
               width: marginSmall,
-            ),
+            ),*/
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -55,7 +46,8 @@ class CardAllEvento extends StatelessWidget {
                 ),
                 Text(
                   "Nov 05-07-21 20:00 GTM+AR",
-                  style: TextStyle(color: black_05),
+                  style:
+                      TextStyle(color: black_05, fontWeight: FontWeight.w600),
                 ),
                 Text("Formosa,Argentina", style: TextStyle(color: black_05)),
               ],

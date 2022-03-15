@@ -35,29 +35,55 @@ class _LoginRegisterState extends State<LoginRegister> {
           bottomNavigationBar: Container(
             padding: EdgeInsets.only(
                 right: marginBig, left: marginBig, bottom: marginMedium),
-            child: widget.page == 2
-                ? TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Reenviar enlace",
-                      style: TextStyle(color: primary),
-                    ))
-                : ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: HexColor("#B5B5B5"),
-                        elevation: 0,
-                        minimumSize: Size.fromHeight(altoButtom)),
-                    onPressed: () {
-                      setState(() {
-                        if (widget.page <= 2) {
-                          widget.page = widget.page + 1;
-                        }
-                      });
-                    },
-                    child: Text(
-                      "Siguiente",
-                      style: TextStyle(fontSize: textMediumEntrada),
-                    )),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                widget.page == 2
+                    ? TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Reenviar enlace",
+                          style: TextStyle(color: primary),
+                        ))
+                    : ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: HexColor("#B5B5B5"),
+                            elevation: 0,
+                            minimumSize: Size.fromHeight(altoButtom)),
+                        onPressed: () {
+                          setState(() {
+                            if (widget.page == 1) {
+                              Navigator.of(context).pop();
+                              Navigator.of(context).pushNamed("/dashboard");
+                            } else {
+                              if (widget.page <= 2) {
+                                widget.page = widget.page + 1;
+                              }
+                            }
+                          });
+                        },
+                        child: Text(
+                          "Siguiente",
+                          style: TextStyle(fontSize: textMediumEntrada),
+                        )),
+                widget.page == 1
+                    ? Center(
+                        child: TextButton(
+                          child: Text(
+                            "He olvidado mi contraseña ?",
+                            style:
+                                TextStyle(color: primary, fontSize: textMedium),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              widget.page = 2;
+                            });
+                          },
+                        ),
+                      )
+                    : Container()
+              ],
+            ),
           ),
         )),
         onWillPop: () async {
@@ -66,8 +92,18 @@ class _LoginRegisterState extends State<LoginRegister> {
         });
   }
 
+  /**
+   * Center(
+                    child: Text(
+                      "He olvidado mi contraseña",
+                      style: TextStyle(color: primary, fontSize: textMedium),
+                    ),
+                  )
+   * 
+   * **/
+
   _preview() {
-    if (widget.page <= 0) {
+    if (widget.page <= 0 && widget.page < 1) {
       Navigator.of(context).pop();
     } else {
       setState(() {
